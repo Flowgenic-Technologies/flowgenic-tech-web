@@ -173,31 +173,7 @@ const CaseStudiesPage = () => {
         </div>
       </section>
 
-      {/* Industries */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground mb-6">
-              Industries We
-              <span className="text-gradient"> Serve</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our solutions have delivered results across diverse industries and business sizes.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              'Technology', 'E-commerce', 'Healthcare', 'Finance', 'Manufacturing', 'Education',
-              'Real Estate', 'Marketing', 'Logistics', 'Retail', 'Consulting', 'Startups'
-            ].map((industry) => (
-              <Card key={industry} className="p-4 text-center shadow-card hover-lift bg-card">
-                <div className="text-sm font-medium text-foreground">{industry}</div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20">

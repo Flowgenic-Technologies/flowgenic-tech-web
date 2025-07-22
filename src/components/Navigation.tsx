@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Menu, X, Code, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/newlogo.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +11,7 @@ const Navigation = () => {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'About', path: '/about' },
-    { name: 'Case Studies', path: '/case-studies' },
-    { name: 'Blog', path: '/blog' },
+    // { name: 'Case Studies', path: '/case-studies' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -20,16 +20,16 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center space-x-1">
-              <Zap className="h-8 w-8 text-primary" />
-              <Code className="h-6 w-6 text-secondary" />
-            </div>
-            <span className="font-heading font-bold text-xl text-foreground">
-              FlowGenic
-            </span>
-          </div>
+          <a href="/">
+            <div className="flex items-center space-x-2">
 
+              <img src={logo} alt=""
+                height={100}
+                width={60}
+              />
+              FlowGenic Technologies
+            </div>
+          </a>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
@@ -37,8 +37,7 @@ const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-smooth hover:text-primary ${
-                    isActive ? 'text-primary' : 'text-muted-foreground'
+                  `text-lg font-medium transition-smooth hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'
                   }`
                 }
               >
@@ -48,14 +47,12 @@ const Navigation = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              Get Quote
-            </Button>
+          {/* <div className="hidden md:flex items-center space-x-4">
             <Button className="btn-hero text-sm px-6 py-2">
-              Schedule Demo
+          Contact Us
             </Button>
-          </div>
+          </div> */}
+          <div></div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -79,8 +76,7 @@ const Navigation = () => {
                   key={item.name}
                   to={item.path}
                   className={({ isActive }) =>
-                    `block px-3 py-2 text-base font-medium transition-smooth hover:text-primary ${
-                      isActive ? 'text-primary' : 'text-muted-foreground'
+                    `block px-3 py-2 text-base font-medium transition-smooth hover:text-primary ${isActive ? 'text-primary' : 'text-muted-foreground'
                     }`
                   }
                   onClick={() => setIsOpen(false)}
@@ -89,11 +85,9 @@ const Navigation = () => {
                 </NavLink>
               ))}
               <div className="pt-4 pb-2 space-y-2">
-                <Button variant="outline" className="w-full">
-                  Get Quote
-                </Button>
+
                 <Button className="w-full btn-hero">
-                  Schedule Demo
+                  Contact Us
                 </Button>
               </div>
             </div>

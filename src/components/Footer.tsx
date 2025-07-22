@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, LinkedinIcon, TwitterIcon, GithubIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTiktok } from "react-icons/fa6";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,14 +9,14 @@ const Footer = () => {
     services: [
       'Automation Solutions',
       'Custom Development',
-      'DevOps & Cloud',
-      'AI/ML Implementation',
+      'Digital Marketing',
+      'AI generated Ads',
     ],
     company: [
-      'About Us',
-      'Case Studies',
-      'Blog',
-      'Careers',
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services' },
+      { label: 'About Us', href: '/about' },
+      { label: 'Contact', href: '/contact' },
     ],
     resources: [
       'Documentation',
@@ -37,20 +38,20 @@ const Footer = () => {
               <p className="text-primary-foreground/80 mb-6 leading-relaxed">
                 Transforming businesses through intelligent automation and custom software development.
               </p>
-              
+
               {/* Contact Info */}
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">hello@flowgenic.com</span>
+                  <span className="text-sm">info.flowgenic@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">+1 (555) 123-4567</span>
+                  <span className="text-sm">+977 9819185638</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-4 w-4 text-secondary" />
-                  <span className="text-sm">San Francisco, CA</span>
+                  <span className="text-sm">Lalitpur, Nepal</span>
                 </div>
               </div>
             </div>
@@ -74,14 +75,18 @@ const Footer = () => {
               <h4 className="font-semibold text-lg mb-4">Company</h4>
               <ul className="space-y-2">
                 {footerLinks.company.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-smooth text-sm">
-                      {link}
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-primary-foreground/80 hover:text-secondary transition-smooth text-sm"
+                    >
+                      {link.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
+
 
             {/* Newsletter */}
             <div>
@@ -113,14 +118,17 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
-                <LinkedinIcon className="h-5 w-5" />
+              <a href="https://www.linkedin.com" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+                <FaLinkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
-                <TwitterIcon className="h-5 w-5" />
+              <a href="https://www.facebook.com/profile.php?id=61578811012353" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+                <FaFacebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
-                <GithubIcon className="h-5 w-5" />
+              <a href="https://www.instagram.com/flowgenictechnologies__/" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+                <FaInstagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.tiktok.com" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+                <FaTiktok className="h-5 w-5" />
               </a>
             </div>
           </div>

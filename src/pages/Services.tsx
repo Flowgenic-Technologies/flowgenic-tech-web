@@ -2,8 +2,10 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Settings, Code2, Cloud, Brain, CheckCircle, Users, Clock, Shield } from 'lucide-react';
+import { ArrowRight, Settings, Code2, Cloud, Brain, CheckCircle, Users, Clock, Shield, BrainCircuit, Megaphone } from 'lucide-react';
 import softwareDevImage from '@/assets/software-development.jpg';
+import ReadyToWork from '@/components/readyToWork';
+import { HoverEffect } from '@/components/ui/card-hover-effect';
 
 const ServicesPage = () => {
   const services = [
@@ -38,35 +40,37 @@ const ServicesPage = () => {
       pricing: 'Starting from $10,000',
     },
     {
-      icon: Cloud,
-      title: 'DevOps & Cloud Integration',
-      description: 'Optimize your infrastructure with modern DevOps practices and cloud solutions for maximum scalability, reliability, and performance.',
-      features: [
-        'Cloud Migration (AWS, Azure, GCP)',
-        'CI/CD Pipeline Setup',
-        'Infrastructure as Code (IaC)',
-        'Container Orchestration (Docker, Kubernetes)',
-        'Monitoring & Alerting',
-        'Security & Compliance'
-      ],
-      benefits: ['99.9% Uptime', 'Auto Scaling', 'Cost Optimization', 'Enhanced Security'],
-      pricing: 'Starting from $7,500',
-    },
+  icon: Megaphone,
+  title: 'Digital Marketing',
+  description: 'Boost brand visibility and engagement through targeted digital strategies tailored to your audience across multiple channels.',
+  features: [
+    'SEO & SEM Optimization',
+    'Social Media Campaigns',
+    'Email Marketing Automation',
+    'Content Strategy & Copywriting',
+    'Omnichannel Campaign Management',
+    'Performance Tracking & Analytics'
+  ],
+  benefits: ['Increased Traffic', 'Better Conversion Rates', 'Brand Awareness', 'Customer Retention'],
+  pricing: 'Starting from $3,000',
+},
+
     {
-      icon: Brain,
-      title: 'AI/ML Implementation',
-      description: 'Leverage artificial intelligence and machine learning to unlock insights, automate decisions, and gain competitive advantages.',
-      features: [
-        'Predictive Analytics',
-        'Natural Language Processing',
-        'Computer Vision Solutions',
-        'Recommendation Systems',
-        'Chatbots & Virtual Assistants',
-        'Data Science & Analytics'
-      ],
-      benefits: ['Data-Driven Insights', 'Automated Decisions', 'Improved Accuracy', 'Competitive Edge'],
-      pricing: 'Starting from $12,000',
-    },
+  icon: BrainCircuit,
+  title: 'AI-Generated Ads',
+  description: 'Leverage AI to generate high-performing ad creatives that adapt to your audience for maximum ROI and engagement.',
+  features: [
+    'AI-Powered Ad Copy Generation',
+    'Smart Image & Video Creation',
+    'Audience Targeting & Segmentation',
+    'Dynamic A/B Testing',
+    'Real-Time Optimization',
+    'Platform Integration (Meta, Google, TikTok)'
+  ],
+  benefits: ['Higher Engagement', 'Reduced Ad Spend Waste', 'Faster Campaign Launches', 'Better Targeting'],
+  pricing: 'Starting from $2,500',
+}
+
   ];
 
   const process = [
@@ -99,7 +103,7 @@ const ServicesPage = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-10">
             <div className="animate-slide-up">
               <h1 className="font-heading font-bold text-4xl md:text-6xl text-foreground mb-6">
                 Comprehensive
@@ -109,15 +113,7 @@ const ServicesPage = () => {
                 From automation to custom development, we provide end-to-end technology solutions 
                 that transform your business operations and drive sustainable growth.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-hero">
-                  Get Free Consultation
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="lg">
-                  View Case Studies
-                </Button>
-              </div>
+               
             </div>
             <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
               <img 
@@ -149,10 +145,10 @@ const ServicesPage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                   <div>
                     <div className="flex items-center space-x-4 mb-6">
-                      <div className="p-4 bg-primary/10 rounded-xl">
-                        <service.icon className="h-8 w-8 text-primary" />
+                      <div className="p-4 bg-slate-100 rounded-xl">
+                        <service.icon className="h-8 w-8 text-chart-2" />
                       </div>
-                      <h3 className="font-heading font-bold text-3xl text-foreground">
+                      <h3 className="font-heading font-bold text-3xl text-chart-3">
                         {service.title}
                       </h3>
                     </div>
@@ -171,16 +167,16 @@ const ServicesPage = () => {
                     </div>
 
                     <div className="flex items-center justify-between mb-6">
-                      <div className="text-2xl font-bold text-primary">{service.pricing}</div>
-                      <Button className="btn-hero">
+                      <div className="text-2xl font-bold text-chart-1">{service.pricing}</div>
+                      {/* <Button className="btn-hero">
                         Get Quote
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-xl text-foreground mb-6">What's Included:</h4>
+                    <h4 className="font-semibold text-xl text-chart-2 mb-6">What's Included:</h4>
                     <div className="space-y-3">
                       {service.features.map((feature) => (
                         <div key={feature} className="flex items-start space-x-3">
@@ -200,7 +196,7 @@ const ServicesPage = () => {
       {/* Process Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-slide-in-right">
             <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground mb-6">
               Our
               <span className="text-gradient"> Process</span>
@@ -210,41 +206,13 @@ const ServicesPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <Card key={step.step} className="p-6 text-center shadow-card hover-lift bg-card">
-                <div className="text-4xl font-bold text-primary/20 mb-4">{step.step}</div>
-                <h3 className="font-semibold text-xl text-foreground mb-4">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
-              </Card>
-            ))}
+          <div >
+             <HoverEffect items={process} className='animate-slide-in-left'/>
           </div>
+            
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gradient-to-r from-primary to-secondary rounded-2xl p-12 text-white">
-            <h3 className="font-heading font-bold text-3xl md:text-4xl mb-6">
-              Ready to Start Your Project?
-            </h3>
-            <p className="text-xl mb-8 text-white/90">
-              Let's discuss your requirements and create a custom solution that drives your business forward.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4">
-                Schedule Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4">
-                Call Us: (555) 123-4567
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <ReadyToWork/>
       <Footer />
     </div>
   );

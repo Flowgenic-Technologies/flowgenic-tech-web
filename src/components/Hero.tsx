@@ -1,6 +1,7 @@
 import { ArrowRight, Play, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-automation.jpg';
+import { TypingAnimation } from './magicui/typing-animation';
 
 const Hero = () => {
   return (
@@ -26,16 +27,16 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main content */}
         <div className="animate-slide-up">
-          <h1 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-            Transform Your Business with
-            <span className="block text-gradient bg-gradient-to-r from-white to-accent-foreground">
-              Intelligent Automation
-            </span>
-          </h1>
+          
+           <TypingAnimation
+              className="text-white font-bold text-3xl md:text-5xl lg:text-6xl"
+            >
+              Transform Your Business with Intelligent Automation
+            </TypingAnimation>
+            <br />
           
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
-            FlowGenic Technologies delivers cutting-edge automation solutions and custom software development 
-            that drive efficiency, innovation, and growth for startups, SMEs, and enterprises.
+            FlowGenic Technologies provides smart automation and custom software solutions to boost efficiency and growth for startups, SMEs, and enterprises.
           </p>
 
           {/* Key benefits */}
@@ -56,28 +57,29 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a href="/contact">
             <Button 
               size="lg" 
               className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 text-lg hover-lift"
             >
-              Schedule Free Demo
+              Schedule Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            
-            <Button 
+            </a>
+            {/* <Button 
               variant="outline" 
               size="lg"
-              className="border-white/30 text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg backdrop-blur-sm"
+              className="border-white/30 text-primary hover:text-white hover:bg-white/10 font-semibold px-8 py-4 text-lg backdrop-blur-sm"
             >
               <Play className="mr-2 h-5 w-5" />
               Watch Overview
-            </Button>
+            </Button> */}
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto text-white">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold mb-2">50+</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2">30+</div>
               <div className="text-white/80">Projects Delivered</div>
             </div>
             <div className="text-center">

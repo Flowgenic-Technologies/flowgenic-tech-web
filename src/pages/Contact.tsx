@@ -49,19 +49,19 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      details: 'hello@flowgenic.com',
+      details: 'info.flowgenic@gmail.com',
       description: 'Send us an email anytime',
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 6pm PST',
+      details: '+977 9819185638',
+      description: 'Mon-Fri from 10:00 AM to 5 PM ',
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'San Francisco, CA',
+      details: 'Lalitpur, Nepal',
       description: 'Schedule an in-person meeting',
     },
     {
@@ -75,7 +75,7 @@ const ContactPage = () => {
   const services = [
     'Automation Solutions',
     'Custom Software Development',
-    'DevOps & Cloud Integration',
+    'Digital Marketing',
     'AI/ML Implementation',
     'Consulting & Strategy',
     'Other',
@@ -103,8 +103,8 @@ const ContactPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {contactInfo.map((info, index) => (
               <Card key={info.title} className="p-6 text-center shadow-card hover-lift bg-card">
-                <div className="p-3 bg-primary/10 rounded-lg w-fit mx-auto mb-4">
-                  <info.icon className="h-6 w-6 text-primary" />
+                <div className="p-3 bg-slate-100 rounded-lg w-fit mx-auto mb-4">
+                  <info.icon className="h-6 w-6 text-chart-2" />
                 </div>
                 <h3 className="font-semibold text-lg text-foreground mb-2">{info.title}</h3>
                 <div className="text-primary font-medium mb-1">{info.details}</div>
@@ -124,15 +124,15 @@ const ContactPage = () => {
               <Card className="p-8 md:p-12 shadow-card">
                 <div className="flex items-center space-x-3 mb-8">
                   <MessageSquare className="h-8 w-8 text-primary" />
-                  <h2 className="font-heading font-bold text-3xl text-foreground">
+                  <h2 className="font-heading font-bold text-3xl text-chart-2">
                     Send Us a Message
                   </h2>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
+                    <div className="space-y-2 ">
+                      <Label htmlFor="name" className='text-chart-3 font-semibold'>Full Name *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -143,7 +143,7 @@ const ContactPage = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email" className='text-chart-3 font-semibold'>Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -151,14 +151,14 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="john@company.com"
+                        placeholder="john@gmail.com"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
+                      <Label htmlFor="company" className='text-chart-3 font-semibold'>Company</Label>
                       <Input
                         id="company"
                         name="company"
@@ -168,20 +168,20 @@ const ContactPage = () => {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
+                      <Label htmlFor="phone" className='text-chart-3 font-semibold'>Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+977 0123456789"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="service">Service of Interest</Label>
+                    <Label htmlFor="service" className='text-chart-3 font-semibold'>Service of Interest</Label>
                     <select
                       id="service"
                       name="service"
@@ -199,7 +199,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message" className='text-chart-3 font-semibold'>Message *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -211,7 +211,7 @@ const ContactPage = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full btn-hero">
+                  <Button type="submit" size="lg" className="w-full btn-hero bg-chart-2 hover:bg-chart-1">
                     Send Message
                     <Send className="ml-2 h-5 w-5" />
                   </Button>
@@ -222,7 +222,7 @@ const ContactPage = () => {
             {/* Additional Info */}
             <div className="space-y-8">
               {/* Quick Actions */}
-              <Card className="p-8 shadow-card">
+              {/* <Card className="p-8 shadow-card">
                 <h3 className="font-semibold text-xl text-foreground mb-6">Quick Actions</h3>
                 <div className="space-y-4">
                   <Button variant="outline" className="w-full justify-start">
@@ -238,22 +238,22 @@ const ContactPage = () => {
                     Get a Quote
                   </Button>
                 </div>
-              </Card>
+              </Card> */}
 
               {/* FAQ */}
               <Card className="p-8 shadow-card">
-                <h3 className="font-semibold text-xl text-foreground mb-6">Frequently Asked</h3>
+                <h3 className="font-semibold text-xl text-chart-2 mb-6">Frequently Asked</h3>
                 <div className="space-y-4">
                   <div>
-                    <div className="font-medium text-foreground mb-2">How quickly can we start?</div>
+                    <div className="font-medium text-chart-1 mb-2">How quickly can we start?</div>
                     <div className="text-sm text-muted-foreground">Most projects can begin within 1-2 weeks after requirements gathering.</div>
                   </div>
                   <div>
-                    <div className="font-medium text-foreground mb-2">What's included in the consultation?</div>
+                    <div className="font-medium text-chart-1 mb-2">What's included in the consultation?</div>
                     <div className="text-sm text-muted-foreground">Free 60-minute strategy session, requirements analysis, and project roadmap.</div>
                   </div>
                   <div>
-                    <div className="font-medium text-foreground mb-2">Do you provide ongoing support?</div>
+                    <div className="font-medium text-chart-1 mb-2">Do you provide ongoing support?</div>
                     <div className="text-sm text-muted-foreground">Yes, we offer 24/7 support and maintenance packages for all our solutions.</div>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ const ContactPage = () => {
 
               {/* Office Hours */}
               <Card className="p-8 shadow-card">
-                <h3 className="font-semibold text-xl text-foreground mb-6">Office Hours</h3>
+                <h3 className="font-semibold text-xl text-chart-2 mb-6">Office Hours</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Monday - Friday</span>
@@ -276,7 +276,7 @@ const ContactPage = () => {
                     <span className="text-foreground font-medium">Closed</span>
                   </div>
                   <div className="pt-3 border-t border-border">
-                    <div className="text-primary font-medium">Emergency Support: 24/7</div>
+                    <div className="text-chart-1 font-medium">Emergency Support: 24/7</div>
                   </div>
                 </div>
               </Card>
@@ -288,20 +288,20 @@ const ContactPage = () => {
       {/* CTA Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-6">
+          <h3 className="font-heading font-bold text-3xl md:text-4xl text-chart-1 mb-6">
             Prefer to Talk Directly?
           </h3>
           <p className="text-xl text-muted-foreground mb-8">
             Schedule a free 30-minute consultation to discuss your project requirements and explore how we can help.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="btn-hero">
+            {/* <Button size="lg" className="btn-hero">
               <Calendar className="mr-2 h-5 w-5" />
               Schedule Free Consultation
-            </Button>
+            </Button> */}
             <Button variant="outline" size="lg">
               <Phone className="mr-2 h-5 w-5" />
-              Call (555) 123-4567
+              Call (+977 ) 9819185638
             </Button>
           </div>
         </div>

@@ -1,33 +1,34 @@
 import { Star, Quote } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { NumberTicker } from './magicui/number-ticker';
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Sarah Chen',
-      role: 'CTO, TechStart Inc.',
-      company: 'TechStart Inc.',
+      name: 'Bipesh Adhikari',
+      role: 'Manager ',
+      company: 'Agentuary Inc',
       content: 'FlowGenic transformed our entire development workflow. Their automation solutions reduced our deployment time by 80% and significantly improved our team productivity.',
       rating: 5,
     },
     {
-      name: 'Michael Rodriguez',
-      role: 'Product Manager, InnovateCorp',
-      company: 'InnovateCorp',
+      name: 'Kiran Lamsal',
+      role: 'Founder',
+      company: ' Grow Up Pet Shop',
       content: 'The custom software solution FlowGenic built for us exceeded all expectations. Their attention to detail and technical expertise is unmatched.',
       rating: 5,
     },
     {
-      name: 'Emily Thompson',
-      role: 'CEO, GrowthLabs',
-      company: 'GrowthLabs',
+      name: 'Bhabanath Lamsal',
+      role: 'Founder',
+      company: 'Sushrut Ayurved Pharma',
       content: 'Working with FlowGenic was a game-changer. They understood our vision and delivered a scalable platform that grew with our business needs.',
       rating: 5,
     },
   ];
 
   const stats = [
-    { value: '50+', label: 'Projects Completed' },
+    { value: '30+', label: 'Projects Completed' },
     { value: '95%', label: 'Client Satisfaction' },
     { value: '80%', label: 'Process Improvement' },
     { value: '24/7', label: 'Support Available' },
@@ -95,8 +96,9 @@ const Testimonials = () => {
                 className="group"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform">
-                  {stat.value}
+                <div className="text-4xl md:text-5xl font-bold  mb-2 group-hover:scale-110 transition-transform">
+                  <NumberTicker value={typeof stat.value === 'string' ? parseFloat(stat.value) : stat.value} />+
+  
                 </div>
                 <div className="text-muted-foreground font-medium">
                   {stat.label}
