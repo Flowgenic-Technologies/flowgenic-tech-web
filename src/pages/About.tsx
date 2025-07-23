@@ -5,6 +5,14 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Target, Eye, Heart, Award, Users, Lightbulb } from 'lucide-react';
 import ReadyToWork from '@/components/readyToWork';
 import { VideoText } from '@/components/magicui/video-text';
+import lamsal from '@/assets/lamsal.jpg';
+import bipesh from '@/assets/bipesh.jpg';
+import manish from '@/assets/manish.jpg';
+import aman from '@/assets/aman.png';
+import bisesh from '@/assets/bisesh.jpg';
+import saksham from '@/assets/saksham.jpg';
+import aashik from '@/assets/aashik.png';
+import anish from '@/assets/anish.jpg';
 
 const AboutPage = () => {
   const values = [
@@ -31,55 +39,65 @@ const AboutPage = () => {
   ];
 
   const team = [
-    {
-      name: 'Roshan Lamsal',
-      role: 'Founder & CEO',
-      bio: 'With 3+ years in enterprise software development, Lamsal leads our vision of transforming businesses through intelligent automation.',
-      expertise: ['Enterprise Architecture', 'Digital Transformation', 'Strategic Planning'],
-    },
-    {
-      name: 'Bipesh Adhikari',
-      role: 'Project Manager',
-      bio: 'Bipesh brings deep technical expertise in AI/ML and cloud technologies, driving our innovation in automation solutions.',
-      expertise: ['AI/ML Engineering', 'Cloud Architecture', 'DevOps'],
-    },
-    {
-      name: 'Manish Dahal',
-      role: 'Head of Development',
-      bio: 'Manish oversees our development teams, ensuring we deliver scalable, maintainable solutions using modern best practices.',
-      expertise: ['Full-Stack Development', 'System Design', 'Team Leadership'],
-    },
-    {
-      name: 'Aman KC',
-      role: 'Senior App Developer',
-      bio: 'With 3+ years in enterprise software development, Aman leads our vision of transforming businesses through intelligent automation.',
-      expertise: ['Enterprise Architecture', 'Digital Transformation', 'Strategic Planning'],
-    },
-    {
-      name: 'Bisesh Koirala',
-      role: 'Odoo Master',
-      bio: 'Bisesh brings deep technical expertise in AI/ML and cloud technologies, driving our innovation in automation solutions.',
-      expertise: ['AI/ML Engineering', 'Cloud Architecture', 'DevOps'],
-    },
-    {
-      name: 'Saksham Pokhrel',
-      role: 'Senior Marketing Manager',
-      bio: 'Saksham oversees our development teams, ensuring we deliver scalable, maintainable solutions using modern best practices.',
-      expertise: ['Full-Stack Development', 'System Design', 'Team Leadership'],
-    },
-    {
-      name: 'Aashik Thapa',
-      role: 'AI Specialist',
-      bio: 'Aashik oversees our development teams, ensuring we deliver scalable, maintainable solutions using modern best practices.',
-      expertise: ['Full-Stack Development', 'System Design', 'Team Leadership'],
-    },
-    {
-      name: 'Anish Ghimire',
-      role: 'Bakchodi Master',
-      bio: 'Anish oversees our development teams, ensuring we deliver scalable, maintainable solutions using modern best practices.',
-      expertise: ['Full-Stack Development', 'System Design', 'Team Leadership'],
-    },
-  ];
+  {
+    name: 'Roshan Lamsal',
+    role: 'CEO',
+    bio: 'Roshan leads the company’s vision of transforming businesses through intelligent automation and innovation.',
+    expertise: ['Enterprise Architecture', 'Strategic Planning', 'Digital Transformation'],
+    image: lamsal,
+  },
+  {
+    name: 'Bipesh Adhikari',
+    role: 'CTO, Automation Engineer ',
+    bio: 'Bipesh drives automation and tech innovation, combining deep knowledge of integration tools with product engineering.',
+    expertise: ['Automation', 'N8N & Make', 'Cloud Systems'],
+    image: bipesh,
+  },
+  {
+    name: 'Manish Dahal',
+    role: 'HOD',
+    bio: 'Manish oversees engineering processes and ensures teams build scalable, modern software systems.',
+    expertise: ['System Design', 'Team Leadership', 'Full-Stack Development'],
+    image: manish,
+  },
+  {
+    name: 'Aman KC',
+    role: 'Project Manager, App Development ',
+    bio: 'Aman manages project delivery while architecting performant mobile apps using Flutter.',
+    expertise: ['Project Planning', 'Flutter Development', 'Client Communication'],
+    image:  aman,
+  },
+  {
+    name: 'Bisesh Koirala',
+    role: 'CFO, Backend Engineer ',
+    bio: 'Bisesh combines financial strategy with backend engineering to optimize both products and operations.',
+    expertise: ['Odoo ERP', 'Backend Development', 'Finance Management'],
+    image: bisesh,
+  },
+  {
+    name: 'Saksham Pokhrel',
+    role: 'Marketing Manager',
+    bio: 'Saksham handles branding, digital presence, and outreach, ensuring strong market visibility.',
+    expertise: ['Digital Marketing', 'Campaign Strategy', 'SEO/Content'],
+    image: saksham,
+  },
+  {
+    name: 'Aashik Thapa',
+    role: 'AI Engineer',
+    bio: 'Aashik develops and integrates AI-powered systems to enhance automation and decision-making.',
+    expertise: ['Machine Learning', 'NLP', 'AI Integration'],
+    image: aashik,
+  },
+  {
+    name: 'Anish Ghimire',
+    role: 'Junior Developer ',
+    bio: 'Anish contributes to the development of full-stack applications with modern web technologies.',
+    expertise: ['Next.js', 'Django', 'REST APIs'],
+    image: anish,
+  },
+];
+
+
 
   const stats = [
     { value: '30+', label: 'Projects Delivered' },
@@ -178,7 +196,7 @@ const AboutPage = () => {
             {values.map((value, index) => (
               <Card key={value.title} className="p-8 shadow-card hover-lift bg-card">
                 <div className="flex items-start space-x-4">
-                  <div className="p-3 bg-primary/10 rounded-lg flex-shrink-0">
+                  <div className="p-3 bg-slate-100 rounded-lg flex-shrink-0">
                     <value.icon className="h-6 w-6 text-chart-1" />
                   </div>
                   <div>
@@ -193,41 +211,51 @@ const AboutPage = () => {
       </section>
 
       {/* Team */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground mb-6">
-              Meet Our
-              <span className="text-gradient"> Team</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our experienced team combines deep technical expertise with business acumen
-              to deliver solutions that truly transform your operations.
-            </p>
-          </div>
+     
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <Card key={member.name} className="p-8 shadow-card hover-lift bg-card text-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <Users className="h-12 w-12 text-white" />
-                </div>
-                <h3 className="font-semibold text-xl text-foreground mb-2">{member.name}</h3>
-                <div className="text-primary font-medium mb-4">{member.role}</div>
-                <p className="text-muted-foreground mb-6 leading-relaxed">{member.bio}</p>
-                <div className="space-y-2">
-                  <div className="text-sm font-medium text-foreground">Expertise:</div>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {member.expertise.map((skill) => (
-                      <span key={skill} className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Card>
-            ))}
+          <section className="py-20">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="font-heading font-bold text-3xl md:text-5xl text-foreground mb-6">
+        Meet Our <span className="text-gradient">Team</span>
+      </h2>
+      <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+        Our experienced team combines deep technical expertise with business acumen
+        to deliver solutions that truly transform your operations.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {team.map((member) => (
+        <Card key={member.name} className="p-8 shadow-card hover-lift bg-card text-center">
+          <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 ring-4 ring-primary/20">
+            <img
+              src={member.image}
+              alt={member.name}
+              className="object-cover w-full h-full"
+            />
           </div>
+          <h3 className="font-semibold text-xl text-foreground mb-2">{member.name}</h3>
+          <div className="text-primary font-medium mb-4">{member.role}</div>
+          <p className="text-muted-foreground mb-6 leading-relaxed">{member.bio}</p>
+          <div className="space-y-2">
+            <div className="text-sm font-medium text-foreground">Expertise:</div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {member.expertise.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+ 
+
         </div>
       </section>
 
@@ -244,7 +272,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="p-6 shadow-card hover-lift bg-card">
               <h3 className="font-semibold text-lg text-chart-2 mb-3">Proven Track Record</h3>
-              <p className="text-muted-foreground text-sm">50+ successful projects with 95% client satisfaction rate across various industries.</p>
+              <p className="text-muted-foreground text-sm">30+ successful projects with 95% client satisfaction rate across various industries.</p>
             </Card>
             <Card className="p-6 shadow-card hover-lift bg-card">
               <h3 className="font-semibold text-lg text-chart-2 mb-3">Cutting-Edge Technology</h3>

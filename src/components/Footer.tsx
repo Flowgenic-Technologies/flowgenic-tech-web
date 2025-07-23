@@ -41,19 +41,20 @@ const Footer = () => {
 
               {/* Contact Info */}
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
+                <a href="mailto:info.flowgenic@gmail.com" className="flex items-center space-x-3 hover:underline">
                   <Mail className="h-4 w-4 text-secondary" />
                   <span className="text-sm">info.flowgenic@gmail.com</span>
-                </div>
-                <div className="flex items-center space-x-3">
+                </a>
+                <a href="tel:+9779819185638" className="flex items-center space-x-3 hover:underline">
                   <Phone className="h-4 w-4 text-secondary" />
                   <span className="text-sm">+977 9819185638</span>
-                </div>
+                </a>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-4 w-4 text-secondary" />
                   <span className="text-sm">Lalitpur, Nepal</span>
                 </div>
               </div>
+
             </div>
 
             {/* Services */}

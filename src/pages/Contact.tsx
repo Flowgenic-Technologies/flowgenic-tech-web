@@ -84,7 +84,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,7 +94,7 @@ const ContactPage = () => {
               <span className="text-gradient"> Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-              Ready to transform your business with intelligent automation and custom software? 
+              Ready to transform your business with intelligent automation and custom software?
               Let's discuss your project and explore how FlowGenic can help you achieve your goals.
             </p>
           </div>
@@ -265,11 +265,11 @@ const ContactPage = () => {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Monday - Friday</span>
-                    <span className="text-foreground font-medium">8:00 AM - 6:00 PM PST</span>
+                    <span className="text-foreground font-medium">10:00 AM - 5:00 PM</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Saturday</span>
-                    <span className="text-foreground font-medium">10:00 AM - 4:00 PM PST</span>
+                    <span className="text-foreground font-medium">Closed</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Sunday</span>
@@ -285,6 +285,26 @@ const ContactPage = () => {
         </div>
       </section>
 
+      <div className="space-y-3">
+        {/* <div className="flex items-center space-x-3">
+          <MapPin className="h-4 w-4 text-secondary" />
+          <span className="text-sm">Lalitpur, Nepal</span>
+        </div> */}
+
+        <div className="w-[80%] mx-auto rounded-lg overflow-hidden shadow-md">
+          <iframe
+            title="Flowgenic Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.092381879854!2d85.31920351506065!3d27.687515432782307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1905dc5cf1ef%3A0x52c44c45784dbf65!2sLalitpur%2C%20Nepal!5e0!3m2!1sen!2snp!4v1623416589373!5m2!1sen!2snp"
+            width="100%"
+            height="500"
+            allowFullScreen
+            loading="lazy"
+            className="border-0 rounded-lg w-full h-[500px]"
+          ></iframe>
+        </div>
+      </div>
+
+
       {/* CTA Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -299,10 +319,13 @@ const ContactPage = () => {
               <Calendar className="mr-2 h-5 w-5" />
               Schedule Free Consultation
             </Button> */}
-            <Button variant="outline" size="lg">
-              <Phone className="mr-2 h-5 w-5" />
-              Call (+977 ) 9819185638
-            </Button>
+            <a href="tel:+9779819185638">
+
+              <Button variant="outline" size="lg">
+                <Phone className="mr-2 h-5 w-5" />
+                Call (+977 ) 9819185638
+              </Button>
+            </a>
           </div>
         </div>
       </section>

@@ -166,13 +166,13 @@ const ServicesPage = () => {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between mb-6">
+                    {/* <div className="flex items-center justify-between mb-6">
                       <div className="text-2xl font-bold text-chart-1">{service.pricing}</div>
-                      {/* <Button className="btn-hero">
+                      <Button className="btn-hero">
                         Get Quote
                         <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button> */}
-                    </div>
+                      </Button>
+                    </div> */}
                   </div>
 
                   <div>

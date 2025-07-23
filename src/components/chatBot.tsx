@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Mic } from 'lucide-react';
+import { MessageSquare, X, Send } from 'lucide-react';
 import clsx from 'clsx';
 
 interface Message {
@@ -50,11 +50,14 @@ const ChatBot: React.FC = () => {
       setMessages([...updatedMessages, assistantMessage]);
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages([...updatedMessages, {
-        role: 'assistant',
-        content: "Sorry, I encountered an error. Please try again.",
-        timestamp: new Date()
-      }]);
+      setMessages([
+        ...updatedMessages,
+        {
+          role: 'assistant',
+          content: 'Sorry, I encountered an error. Please try again.',
+          timestamp: new Date()
+        }
+      ]);
     } finally {
       setIsTyping(false);
     }
@@ -67,6 +70,11 @@ const ChatBot: React.FC = () => {
     }
   }, [messages, open]);
 
+  // Optional: lock scroll on open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : 'auto';
+  }, [open]);
+
   const formatTime = (date?: Date) => {
     if (!date) return '';
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -77,7 +85,7 @@ const ChatBot: React.FC = () => {
       {/* Floating Chat Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-20 bg-blue-600 text-white p-4 rounded-full shadow-lg z-50 hover:bg-blue-700 transition-all hover:shadow-xl"
+        className="fixed bottom-6 right-20 md:right-20 bg-blue-600 text-white p-4 rounded-full shadow-lg z-50 hover:bg-blue-700 transition-all hover:shadow-xl"
         aria-label="ChatBot Toggle"
       >
         {open ? (
@@ -95,7 +103,7 @@ const ChatBot: React.FC = () => {
       {/* Chat Window */}
       <div
         className={clsx(
-          'fixed bottom-20 right-20 w-96 max-h-[70vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
+          'fixed bottom-24 right-4 md:bottom-20 md:right-20 w-[90vw] md:w-96 max-h-[75vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
           open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
         )}
       >
@@ -144,7 +152,7 @@ const ChatBot: React.FC = () => {
               >
                 <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 <span className={clsx(
-                  "text-xs mt-1 block text-right",
+                  'text-xs mt-1 block text-right',
                   msg.role === 'user' ? 'text-blue-100' : 'text-gray-400'
                 )}>
                   {formatTime(msg.timestamp)}
@@ -175,7 +183,6 @@ const ChatBot: React.FC = () => {
                 value={input}
                 onChange={(e) => {
                   setInput(e.target.value);
-                  // Auto-resize the textarea
                   e.target.style.height = 'auto';
                   e.target.style.height = `${e.target.scrollHeight}px`;
                 }}
@@ -193,8 +200,8 @@ const ChatBot: React.FC = () => {
                 onClick={sendMessage}
                 disabled={!input.trim()}
                 className={clsx(
-                  "p-1 rounded-full",
-                  input.trim() ? "text-blue-600 hover:text-blue-700" : "text-gray-400"
+                  'p-1 rounded-full',
+                  input.trim() ? 'text-blue-600 hover:text-blue-700' : 'text-gray-400'
                 )}
               >
                 <Send className="w-4 h-4" />

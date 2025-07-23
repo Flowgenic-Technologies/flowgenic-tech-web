@@ -84,12 +84,13 @@ const Navigation = () => {
                   {item.name}
                 </NavLink>
               ))}
-              <div className="pt-4 pb-2 space-y-2">
-
-                <Button className="w-full btn-hero">
-                  Contact Us
-                </Button>
-              </div>
+              {/* <div className="pt-4 pb-2 space-y-2">
+                <a href="/contact">
+                  <Button className="w-full btn-hero">
+                    Contact Us
+                  </Button>
+                </a>
+              </div> */}
             </div>
           </div>
         )}

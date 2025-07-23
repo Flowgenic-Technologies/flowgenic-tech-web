@@ -5,10 +5,10 @@ import { TypingAnimation } from './magicui/typing-animation';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen pt-24 pb-6 md:pt-0 flex items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 hero-gradient"></div>
-      <div 
+      <div
         className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `url(${heroImage})`,
@@ -17,7 +17,7 @@ const Hero = () => {
           backgroundRepeat: 'no-repeat',
         }}
       ></div>
-      
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
@@ -27,14 +27,14 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Main content */}
         <div className="animate-slide-up">
-          
-           <TypingAnimation
-              className="text-white font-bold text-3xl md:text-5xl lg:text-6xl"
-            >
-              Transform Your Business with Intelligent Automation
-            </TypingAnimation>
-            <br />
-          
+
+          <TypingAnimation
+            className="text-white font-bold text-3xl md:text-5xl lg:text-6xl"
+          >
+            Transform Your Business with Intelligent Automation
+          </TypingAnimation>
+          <br />
+
           <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed">
             FlowGenic Technologies provides smart automation and custom software solutions to boost efficiency and growth for startups, SMEs, and enterprises.
           </p>
@@ -58,13 +58,14 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a href="/contact">
-            <Button 
-              size="lg" 
-              className="bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 text-lg hover-lift"
-            >
-              Schedule Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              <Button
+                size="lg"
+                className="group bg-white text-primary hover:bg-white/90 font-semibold px-8 py-4 text-lg transform transition-transform duration-300 ease-in-out hover:-translate-y-1"
+              >
+                Schedule Consultation
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+              </Button>
+
             </a>
             {/* <Button 
               variant="outline" 
