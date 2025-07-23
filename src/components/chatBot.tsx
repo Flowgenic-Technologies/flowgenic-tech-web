@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Mic } from 'lucide-react';
+import { MessageSquare, X, Send } from 'lucide-react';
 import clsx from 'clsx';
 
 interface Message {
@@ -10,13 +10,11 @@ interface Message {
 
 const ChatBot: React.FC = () => {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: 'assistant',
-      content: 'Hello! How can I help you today?',
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([{
+    role: 'assistant',
+    content: 'Hello! How can I help you today?',
+    timestamp: new Date(),
+  }]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
@@ -27,7 +25,7 @@ const ChatBot: React.FC = () => {
     const userMessage: Message = {
       role: 'user',
       content: input,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
     const updatedMessages = [...messages, userMessage];
     setMessages(updatedMessages);
@@ -35,32 +33,31 @@ const ChatBot: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://n8n1.agentuary.com/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: updatedMessages }),
+        body: JSON.stringify({ message: input }),
       });
 
       const data = await response.json();
       const assistantMessage: Message = {
         role: 'assistant',
-        content: data.reply.content,
-        timestamp: new Date()
+        content: data.message || 'Sorry, I didn\'t understand that.',
+        timestamp: new Date(),
       };
       setMessages([...updatedMessages, assistantMessage]);
     } catch (error) {
       console.error('Chat error:', error);
       setMessages([...updatedMessages, {
         role: 'assistant',
-        content: "Sorry, I encountered an error. Please try again.",
-        timestamp: new Date()
+        content: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date(),
       }]);
     } finally {
       setIsTyping(false);
     }
   };
 
-  // Auto-scroll to bottom
   useEffect(() => {
     if (chatRef.current) {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -74,32 +71,18 @@ const ChatBot: React.FC = () => {
 
   return (
     <>
-      {/* Floating Chat Button */}
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-6 right-20 bg-blue-600 text-white p-4 rounded-full shadow-lg z-50 hover:bg-blue-700 transition-all hover:shadow-xl"
         aria-label="ChatBot Toggle"
       >
-        {open ? (
-          <X className="w-5 h-5" />
-        ) : (
-          <>
-            <MessageSquare className="w-5 h-5" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
-              {messages.length}
-            </span>
-          </>
-        )}
+        {open ? <X className="w-5 h-5" /> : <><MessageSquare className="w-5 h-5" /><span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center animate-pulse">{messages.length}</span></>}
       </button>
 
-      {/* Chat Window */}
-      <div
-        className={clsx(
-          'fixed bottom-20 right-20 w-96 max-h-[70vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
-          open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
-        )}
-      >
-        {/* Header */}
+      <div className={clsx(
+        'fixed bottom-20 right-20 w-96 max-h-[70vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
+        open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
+      )}>
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-full bg-blue-400 flex items-center justify-center">
@@ -107,46 +90,20 @@ const ChatBot: React.FC = () => {
             </div>
             <div>
               <h3 className="font-semibold text-sm">FlowGenic AI</h3>
-              <p className="text-xs opacity-80">
-                {isTyping ? 'Typing...' : 'Online'}
-              </p>
+              <p className="text-xs opacity-80">{isTyping ? 'Typing...' : 'Online'}</p>
             </div>
           </div>
-          <button
-            onClick={() => setOpen(false)}
-            className="text-white hover:text-gray-200 transition-colors"
-          >
+          <button onClick={() => setOpen(false)} className="text-white hover:text-gray-200 transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Messages */}
-        <div
-          ref={chatRef}
-          className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50"
-        >
+        <div ref={chatRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-50">
           {messages.map((msg, idx) => (
-            <div
-              key={idx}
-              className={clsx(
-                'flex flex-col',
-                msg.role === 'user' ? 'items-end' : 'items-start'
-              )}
-            >
-              <div
-                className={clsx(
-                  'p-3 rounded-2xl max-w-[85%] relative break-words',
-                  msg.role === 'user'
-                    ? 'bg-blue-600 text-white rounded-tr-none'
-                    : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-200'
-                )}
-                style={{ wordBreak: 'break-word' }}
-              >
+            <div key={idx} className={clsx('flex flex-col', msg.role === 'user' ? 'items-end' : 'items-start')}>
+              <div className={clsx('p-3 rounded-2xl max-w-[85%] relative break-words', msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-200')}>
                 <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
-                <span className={clsx(
-                  "text-xs mt-1 block text-right",
-                  msg.role === 'user' ? 'text-blue-100' : 'text-gray-400'
-                )}>
+                <span className={clsx("text-xs mt-1 block text-right", msg.role === 'user' ? 'text-blue-100' : 'text-gray-400')}>
                   {formatTime(msg.timestamp)}
                 </span>
               </div>
@@ -165,7 +122,6 @@ const ChatBot: React.FC = () => {
           )}
         </div>
 
-        {/* Input Area */}
         <div className="border-t border-gray-200 p-3 bg-white">
           <div className="relative">
             <div className="flex items-center bg-gray-100 rounded-full pl-4 pr-10 min-h-[40px] overflow-hidden">
@@ -175,7 +131,6 @@ const ChatBot: React.FC = () => {
                 value={input}
                 onChange={(e) => {
                   setInput(e.target.value);
-                  // Auto-resize the textarea
                   e.target.style.height = 'auto';
                   e.target.style.height = `${e.target.scrollHeight}px`;
                 }}
@@ -192,10 +147,7 @@ const ChatBot: React.FC = () => {
               <button
                 onClick={sendMessage}
                 disabled={!input.trim()}
-                className={clsx(
-                  "p-1 rounded-full",
-                  input.trim() ? "text-blue-600 hover:text-blue-700" : "text-gray-400"
-                )}
+                className={clsx("p-1 rounded-full", input.trim() ? "text-blue-600 hover:text-blue-700" : "text-gray-400")}
               >
                 <Send className="w-4 h-4" />
               </button>
