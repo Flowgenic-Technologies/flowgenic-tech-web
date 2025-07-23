@@ -10,6 +10,8 @@ import CaseStudies from "./pages/CaseStudies";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ScrollToTopButton from "./components/scrollToTop";
+import ChatBot from "./components/chatBot";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +21,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+      <ChatBot/>
+      <ScrollToTopButton/>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
