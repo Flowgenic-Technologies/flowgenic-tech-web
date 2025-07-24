@@ -8,7 +8,7 @@ import { VideoText } from '@/components/magicui/video-text';
 import lamsal from '@/assets/lamsal.jpg';
 import bipesh from '@/assets/bipesh.jpg';
 import manish from '@/assets/manish.jpg';
-import aman from '@/assets/aman.png';
+import aman from '@/assets/aman.jpg';
 import bisesh from '@/assets/bisesh.jpg';
 import saksham from '@/assets/saksham.jpg';
 import aashik from '@/assets/aashik.png';
@@ -41,7 +41,7 @@ const AboutPage = () => {
   const team = [
   {
     name: 'Roshan Lamsal',
-    role: 'CEO',
+    role: 'Founder, CEO',
     bio: 'Roshan leads the company’s vision of transforming businesses through intelligent automation and innovation.',
     expertise: ['Enterprise Architecture', 'Strategic Planning', 'Digital Transformation'],
     image: lamsal,
@@ -62,7 +62,7 @@ const AboutPage = () => {
   },
   {
     name: 'Aman KC',
-    role: 'Project Manager, App Development ',
+    role: 'COO',
     bio: 'Aman manages project delivery while architecting performant mobile apps using Flutter.',
     expertise: ['Project Planning', 'Flutter Development', 'Client Communication'],
     image:  aman,
