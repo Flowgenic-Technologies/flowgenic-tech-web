@@ -110,7 +110,7 @@ const ChatBot: React.FC = () => {
           {messages.map((msg, idx) => (
             <div key={idx} className={clsx('flex flex-col', msg.role === 'user' ? 'items-end' : 'items-start')}>
               <div className={clsx('p-3 rounded-2xl max-w-[85%] relative break-words', msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-200')}>
-                <p className="text-[16px] whitespace-pre-wrap">{msg.content}</p>
+                <p className="text-[16px] md:text-sm whitespace-pre-wrap">{msg.content}</p>
                 <span className={clsx(
                   'text-xs mt-1 block text-right',
                   msg.role === 'user' ? 'text-blue-100' : 'text-gray-400'
