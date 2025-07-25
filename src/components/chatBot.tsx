@@ -88,7 +88,7 @@ const ChatBot: React.FC = () => {
       </button>
 
       <div className={clsx(
-        'fixed bottom-24 right-4 md:bottom-20 md:right-20 w-[90vw] md:w-96 max-h-[75vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
+        'fixed bottom-24 right-4 md:bottom-20 md:right-20 w-[90vw] md:w-96 max-h-[65vh] bg-white rounded-xl shadow-xl z-50 flex flex-col overflow-hidden transition-all duration-300 border border-gray-200',
         open ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-2'
       )}>
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-4 py-3 flex items-center justify-between">
