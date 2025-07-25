@@ -41,7 +41,7 @@ const AboutPage = () => {
   const team = [
   {
     name: 'Roshan Lamsal',
-    role: 'Founder, CEO',
+    role: 'CEO',
     bio: 'Roshan leads the company’s vision of transforming businesses through intelligent automation and innovation.',
     expertise: ['Enterprise Architecture', 'Strategic Planning', 'Digital Transformation'],
     image: lamsal,
