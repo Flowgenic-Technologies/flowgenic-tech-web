@@ -12,6 +12,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTopButton from "./components/scrollToTop";
 import ChatBot from "./components/chatBot";
+import PrivacyPolicy from "./pages/privacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,9 @@ const App = () => (
           {/* <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/blog" element={<Blog />} /> */}
           <Route path="/contact" element={<Contact />} />
+
+          <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
