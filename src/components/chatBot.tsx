@@ -18,6 +18,7 @@ const ChatBot: React.FC = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
+  const sessionId = useRef<string>(crypto.randomUUID());
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -36,7 +37,7 @@ const ChatBot: React.FC = () => {
       const response = await fetch('https://n8n1.agentuary.com/webhook/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: input, sessionId: sessionId.current }),
       });
 
       const data = await response.json();
