@@ -89,12 +89,12 @@ const AboutPage = () => {
     image: aashik,
   },
   {
-    name: 'Anish Ghimire',
-    role: 'Junior Developer ',
-    bio: 'Anish contributes to the development of full-stack applications with modern web technologies.',
-    expertise: ['Next.js', 'Django', 'REST APIs'],
-    image: anish,
-  },
+  name: 'Anish Ghimire',
+  role: 'Cloud Associate',
+  bio: 'Anish is passionate about cloud infrastructure, Terraform, and CI/CD automation for modern deployment workflows.',
+  expertise: ['Terraform', 'CI/CD', 'Cloud Deployment'],
+  image: anish,
+}
 ];
 
 
