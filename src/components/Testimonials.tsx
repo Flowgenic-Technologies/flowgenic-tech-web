@@ -27,12 +27,12 @@ const Testimonials = () => {
     },
   ];
 
-  const stats = [
-    { value: '30+', label: 'Projects Completed' },
-    { value: '95%', label: 'Client Satisfaction' },
-    { value: '80%', label: 'Process Improvement' },
-    { value: '24/7', label: 'Support Available' },
-  ];
+  // const stats = [
+  //   { value: '5+', label: 'Projects Completed' },
+  //   { value: '95%', label: 'Client Satisfaction' },
+  //   { value: '10%', label: 'Process Improvement' },
+  //   { value: '24*7', label: 'Support Available' },
+  // ];
 
   return (
     <section className="py-20 bg-background">
@@ -88,25 +88,45 @@ const Testimonials = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="bg-muted/30 rounded-2xl p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div 
-                key={stat.label} 
-                className="group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="text-4xl md:text-5xl font-bold  mb-2 group-hover:scale-110 transition-transform">
-                  <NumberTicker value={typeof stat.value === 'string' ? parseFloat(stat.value) : stat.value} />+
-  
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Stats Section */}
+<div className="bg-muted/30 rounded-2xl p-12">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+    {/* Projects Completed */}
+    <div className="group" style={{ animationDelay: '0s' }}>
+      <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+        <NumberTicker value={5} />+
+      </div>
+      <div className="text-muted-foreground font-medium">Projects Completed</div>
+    </div>
+
+    {/* Client Satisfaction */}
+    <div className="group" style={{ animationDelay: '0.1s' }}>
+      <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+        <NumberTicker value={98} />%
+      </div>
+      <div className="text-muted-foreground font-medium">Client Satisfaction</div>
+    </div>
+
+    {/* Process Improvement */}
+    <div className="group" style={{ animationDelay: '0.2s' }}>
+      <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+        <NumberTicker value={10} />+
+      </div>
+      <div className="text-muted-foreground font-medium">Process Improvement</div>
+    </div>
+
+    {/* Support Available */}
+    <div className="group" style={{ animationDelay: '0.3s' }}>
+      <div className="text-4xl text-gradient md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+        24*7
+      </div>
+      <div className="text-muted-foreground font-medium">Support Available</div>
+    </div>
+
+  </div>
+</div>
+
       </div>
     </section>
   );

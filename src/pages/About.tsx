@@ -100,9 +100,9 @@ const AboutPage = () => {
 
 
   const stats = [
-    { value: '30+', label: 'Projects Delivered' },
+    { value: '5+', label: 'Projects Delivered' },
     { value: '95%', label: 'Client Satisfaction' },
-    { value: '3+', label: 'Years Experience' },
+    { value: '1+', label: 'Years Experience' },
     { value: '24/7', label: 'Support Available' },
   ];
 

@@ -120,16 +120,16 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              <a href="https://www.linkedin.com" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+              <a href="https://www.linkedin.com/company/flowgenictechnologies/" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
                 <FaLinkedin className="h-5 w-5" />
               </a>
               <a href="https://www.facebook.com/profile.php?id=61578811012353" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
                 <FaFacebook className="h-5 w-5" />
               </a>
-              <a href="https://www.instagram.com/flowgenictechnologies__/" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+              <a href="https://www.instagram.com/flowgenictechnologies_/" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
                 <FaInstagram className="h-5 w-5" />
               </a>
-              <a href="https://www.tiktok.com" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
+              <a href="https://www.tiktok.com/@flowgenictechnologies" className="text-primary-foreground/80 hover:text-secondary transition-smooth">
                 <FaTiktok className="h-5 w-5" />
               </a>
             </div>
