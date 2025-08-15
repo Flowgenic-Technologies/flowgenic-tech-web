@@ -6,6 +6,7 @@ interface Message {
   role: 'user' | 'assistant';
   content: string;
   timestamp?: Date;
+  isStreaming?: boolean;
 }
 
 const ChatBot: React.FC = () => {
@@ -33,31 +34,87 @@ const ChatBot: React.FC = () => {
     setInput('');
     setIsTyping(true);
 
+    // Add empty assistant message that will be populated during streaming
+    const streamingMessage: Message = {
+      role: 'assistant',
+      content: '',
+      timestamp: new Date(),
+      isStreaming: true,
+    };
+    const messagesWithStreaming = [...updatedMessages, streamingMessage];
+    setMessages(messagesWithStreaming);
+
     try {
-      const response = await fetch('https://n8n1.agentuary.com/webhook/chat', {
+      const response = await fetch('https://n8n1.agentuary.com/webhook/43b5a64b-316b-4362-b4e9-91d88415aa75/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: input, sessionId: sessionId.current }),
       });
 
-      const data = await response.json();
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.message || 'Sorry, I didn\'t understand that.',
-        timestamp: new Date(),
-      };
-      setMessages([...updatedMessages, assistantMessage]);
+      if (!response.body) {
+        throw new Error('No response body');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        const lines = chunk.split('\n').filter(line => line.trim());
+
+        for (const line of lines) {
+          try {
+            const data = JSON.parse(line);
+            
+            if (data.type === 'item' && data.content) {
+              // Update the streaming message with new content
+              setMessages(prevMessages => {
+                const updatedMessages = [...prevMessages];
+                const lastMessage = updatedMessages[updatedMessages.length - 1];
+                
+                if (lastMessage && lastMessage.role === 'assistant' && lastMessage.isStreaming) {
+                  lastMessage.content += data.content;
+                }
+                
+                return updatedMessages;
+              });
+            } else if (data.type === 'end') {
+              // Mark streaming as complete
+              setMessages(prevMessages => {
+                const updatedMessages = [...prevMessages];
+                const lastMessage = updatedMessages[updatedMessages.length - 1];
+                
+                if (lastMessage && lastMessage.role === 'assistant' && lastMessage.isStreaming) {
+                  lastMessage.isStreaming = false;
+                }
+                
+                return updatedMessages;
+              });
+              setIsTyping(false);
+            }
+          } catch (parseError) {
+            // Skip invalid JSON lines
+            continue;
+          }
+        }
+      }
     } catch (error) {
       console.error('Chat error:', error);
-      setMessages([
-        ...updatedMessages,
-        {
+      setMessages(prevMessages => {
+        const updatedMessages = [...prevMessages];
+        // Remove the streaming message and add error message
+        updatedMessages.pop();
+        updatedMessages.push({
           role: 'assistant',
           content: 'Sorry, I encountered an error. Please try again.',
           timestamp: new Date()
-        }
-      ]);
-    } finally {
+        });
+        return updatedMessages;
+      });
       setIsTyping(false);
     }
   };
@@ -71,6 +128,9 @@ const ChatBot: React.FC = () => {
   // Optional: lock scroll on open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : 'auto';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [open]);
 
   const formatTime = (date?: Date) => {
@@ -111,7 +171,12 @@ const ChatBot: React.FC = () => {
           {messages.map((msg, idx) => (
             <div key={idx} className={clsx('flex flex-col', msg.role === 'user' ? 'items-end' : 'items-start')}>
               <div className={clsx('p-3 rounded-2xl max-w-[85%] relative break-words', msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white text-gray-800 rounded-tl-none shadow-sm border border-gray-200')}>
-                <p className="text-[16px] md:text-sm whitespace-pre-wrap">{msg.content}</p>
+                <p className="text-[16px] md:text-sm whitespace-pre-wrap">
+                  {msg.content}
+                  {msg.isStreaming && (
+                    <span className="inline-block w-2 h-5 bg-blue-600 ml-1 animate-pulse" />
+                  )}
+                </p>
                 <span className={clsx(
                   'text-xs mt-1 block text-right',
                   msg.role === 'user' ? 'text-blue-100' : 'text-gray-400'
@@ -121,7 +186,7 @@ const ChatBot: React.FC = () => {
               </div>
             </div>
           ))}
-          {isTyping && (
+          {isTyping && !messages.some(m => m.isStreaming) && (
             <div className="flex items-start">
               <div className="bg-white text-gray-800 p-3 rounded-2xl rounded-tl-none shadow-sm border border-gray-200 max-w-[85%]">
                 <div className="flex space-x-1">
@@ -158,10 +223,10 @@ const ChatBot: React.FC = () => {
             <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex space-x-1">
               <button
                 onClick={sendMessage}
-                disabled={!input.trim()}
+                disabled={!input.trim() || isTyping}
                 className={clsx(
                   'p-1 rounded-full',
-                  input.trim() ? 'text-blue-600 hover:text-blue-700' : 'text-gray-400'
+                  input.trim() && !isTyping ? 'text-blue-600 hover:text-blue-700' : 'text-gray-400'
                 )}
               >
                 <Send className="w-4 h-4" />
