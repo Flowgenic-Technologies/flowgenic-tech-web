@@ -62,14 +62,14 @@ const AboutPage = () => {
   },
   {
     name: 'Aman KC',
-    role: 'COO',
-    bio: 'Aman manages project delivery while architecting performant mobile apps using Flutter.',
-    expertise: ['Project Planning', 'Flutter Development', 'Client Communication'],
+    role: 'Mobile APP Developer',
+    bio: ' Aman specializes in mobile app development, creating intuitive and engaging applications that enhance user experience.',
+    expertise: [ 'Flutter', 'Mobile UX/UI Design','Project Planning'],
     image:  aman,
   },
   {
     name: 'Bisesh Koirala',
-    role: 'CFO, Backend Engineer ',
+    role: 'Backend Engineer ',
     bio: 'Bisesh combines financial strategy with backend engineering to optimize both products and operations.',
     expertise: ['Odoo ERP', 'Backend Development', 'Finance Management'],
     image: bisesh,
